@@ -7,4 +7,4 @@ router.post('/', async (req, res) => {
    const response = await vehicleAgent(messages);
    res.json(response);
 })
-export = router;
+export default router;

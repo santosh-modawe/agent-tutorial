@@ -1,8 +1,8 @@
 import env = require("../config/env");
 import type chat = require("../types/chat");
 import ollama from "ollama";
-import type AiProvider = require("./AiProvider");
 import ToolRegistry from "../tools/toolRegistry";
+import AiProvider from "./AiProvider";
 export class OllamaProvider implements AiProvider {
      constructor() {
     }
