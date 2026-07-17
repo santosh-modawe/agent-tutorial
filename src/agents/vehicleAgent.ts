@@ -5,9 +5,10 @@ import systemPrompt from "../prompts/systemPrompt";
 import  AiProvider  from "../providers/AiProvider";
 import ToolRegistry  from "../tools/toolRegistry";
 import type chat = require("../types/chat");
-export async function vehicleAgent(messages: chat.Message[]) {
+export default async function vehicleAgent(messages: chat.Message[]) {
     let apiService = new ApiService(getProvider());
     let response = await apiService.chat([systemPrompt, searchPrompt].join("\n\n"), messages);
+    console.log("Received response:", response);
     let resparse= JSON.parse(response.content);
     console.log("Parsed response:", resparse);
    let vres= await ToolRegistry.getTool(resparse.name).execute(resparse.arguments);
