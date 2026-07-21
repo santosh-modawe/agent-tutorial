@@ -1,10 +1,14 @@
-import searchVechicleTool = require("./searchVechicle.tool");
+import {SearchVehicleTool} from './searchVechicle.tool'
+import { CompareVehicleTool } from './compareVehicle.tool'; 
 import { Tool } from "./tool";
+import { EmailTool } from './email.tool';
  class ToolRegistry {
 
     constructor() {
     
-        this.register(new searchVechicleTool.SearchVehicleTool());
+        this.register(new SearchVehicleTool());
+        this.register(new CompareVehicleTool())
+        this.register(new EmailTool());
 
     }
     private tools = new Map<string, Tool>();
@@ -17,7 +21,7 @@ import { Tool } from "./tool";
         return this.tools.get(name);
     }
 
-    getSchemas() {
+    getSchemas(): any[] {
     return Array.from(this.tools.values()).map(tool =>
         tool.toSchema()
     );

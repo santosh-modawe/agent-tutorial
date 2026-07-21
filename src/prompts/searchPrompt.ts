@@ -22,9 +22,6 @@ Rules:
 3. Do not ask the user for filters they did not provide.
 4. If no filters are provided, call the searchVehicle tool with an empty object.
 5. Call the searchVehicle tool exactly once using only the extracted filters.
-6. After receiving the tool result, respond in json format like  {message: "Here are the matching vehicles:", vehicles: [ ... ]}.
-
-Example:
-Response: {message:"Here are the matching vehicles:", vehicles: []}
+6. Do not invent tool calls in natural language, use the tool name "searchVehicle" in your response.
 `;
 export default searchPrompt;

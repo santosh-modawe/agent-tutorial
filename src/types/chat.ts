@@ -13,7 +13,7 @@ export interface ChatResponse {
 }
 
 export interface ToolCall {
-  id: string;
+  id?: string;
   name: string;
   arguments: Record<string, unknown>;
   

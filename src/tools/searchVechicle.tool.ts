@@ -1,4 +1,5 @@
 
+import { ToolCall } from "ollama";
 import { Tool } from "./tool";
 export class SearchVehicleTool implements Tool {
     name = "searchVehicle";
