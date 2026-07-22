@@ -5,6 +5,8 @@ export interface Message {
     content: string;
     toolCallId?: string;
     name?: string;
+    tool_name?: string;
+    tool_calls?: ToolCall[];
 }
 
 export interface ChatResponse {

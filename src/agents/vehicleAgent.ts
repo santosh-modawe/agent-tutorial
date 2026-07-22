@@ -24,12 +24,20 @@ export default async function vehicleAgent(messages: chat.Message[]) {
      while (true) {
 
     const response = await apiService.chat([systemPrompt, searchPrompt,emailPrompt].join("\n\n"), messages);
-
+   
     if (!response.toolCalls?.length) {
-       
+        console.log(JSON.stringify(messages));
         return response.content;
         break;
     }
+       if(response.toolCalls?.length>0){
+           messages.push({
+        role: "assistant",
+        content: response.content,
+        tool_calls: response.toolCalls
+       });
+    }
+
 
     for (const toolCall of response.toolCalls) {
 
@@ -37,9 +45,10 @@ export default async function vehicleAgent(messages: chat.Message[]) {
  
         const result = await tool?.execute(toolCall.arguments);
         console.log(`Executed tool ${toolCall.name} with result:`, result);
-
+     
         messages.push({
             role: "tool",
+            toolCallId: toolCall.id,
             name: toolCall.name,
             content: JSON.stringify(result)
         });

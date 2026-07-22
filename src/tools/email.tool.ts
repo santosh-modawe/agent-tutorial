@@ -65,7 +65,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "santosh.m@hubengage.com",
-    pass: "",
+    pass: "luin utsg elsx gcxb",
   },
 });
 
